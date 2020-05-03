@@ -20,8 +20,8 @@
             $to      = 'livedeet@livedeets.com';
             $subject = 'Visitor-Mail';
             $message = $_POST["message"];
-            $headers = 'From: $from' . "\r\n" .
-                'Reply-To: $from' . "\r\n" .
+            $headers = 'From: ' . $from . "\r\n" .
+                'Reply-To: ' . $from . "\r\n" .
                 'X-Mailer: PHP/' . phpversion();
 
             $mail = mail($to, $subject, $message, $headers);

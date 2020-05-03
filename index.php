@@ -64,9 +64,12 @@
                 <?php foreach ($tren_posts as $tren_post): ?>
 
                 <div class="post">
-                    <img src="<?php echo BASE_URL . '/assets/images/' . $tren_post['image']; ?>" alt="" class="slider-image">
+                    <img src="<?php echo BASE_URL . '/assets/images/' . $tren_post['image']; ?>" alt=""
+                        class="slider-image">
                     <div class="post-info">
-                        <h4><a href="single.php?id=<?php echo $tren_post['id']; ?>"><?php echo $tren_post['title']; ?></a></h4>
+                        <h4><a
+                                href="single.php?id=<?php echo $tren_post['id']; ?>"><?php echo $tren_post['title']; ?></a>
+                        </h4>
                     </div>
                 </div>
 
@@ -131,7 +134,7 @@
                             onclick="shareFunction('instagram', '<?php echo $actual_link; ?>')"></button>
 
                     </div>
-                    
+
                 </div>
 
                 <div class="section search">
@@ -165,11 +168,89 @@
 
     <?php include_once(ROOT_PATH . "/app/includes/footer.php");?>
 
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js">
     </script>
-    <script type="text/javascript" src="assets/js/scripts.js"></script>
 </body>
 
 </html>
+
+<script>
+
+function shareFunction(name, link) {
+
+    if (name == "facebook") {
+        window.open("https://facebook.com/sharer.php?u=" + link,
+            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+    }
+
+    if (name == "twitter") {
+        window.open("https://twitter.com/intent/tweet?text=" + link,
+            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+    }
+
+    if (name == "google") {
+        window.open("https://plus.google.com/share?url=" + link,
+            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+    }
+
+    if (name == "linkedin") {
+        window.open("https://www.linkedin.com/shareArticle?mini=true&url=" + link,
+            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+    }
+
+    if (name == "instagram") {
+        window.open("https://www.instagram.com/",
+            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+    }
+
+    window.location.href = "" + link + "?&s=1";
+
+}
+
+$(document).ready(function() {
+
+    $('.menu-toggle').on('click', function() {
+        $('.nav').toggleClass('showing');
+        $('.nav ul').toggleClass('showing');
+    });
+
+    $('.post-wrapper').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        nextArrow: $('.next'),
+        prevArrow: $('.prev'),
+        responsive: [{
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
+    });
+
+});
+</script>

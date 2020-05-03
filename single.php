@@ -138,7 +138,8 @@
                     <?php foreach ($posts as $p): ?>
                     <div class="post clearfix">
                         <img src="<?php echo BASE_URL . '/assets/images/' . $p['image']; ?>">
-                        <a href="" class="title"><?php echo $p['title']; ?></a>
+                        <a href="<?php echo BASE_URL . '/single.php?id=' . $p['id']; ?>"
+                            class="title"><?php echo $p['title']; ?></a>
                     </div>
                     <?php endforeach; ?>
 
@@ -163,22 +164,67 @@
 
     <?php include_once(ROOT_PATH . "/app/includes/footer.php");?>
 
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script type="text/javascript" src="assets/js/scripts.js"></script>
+    
 </body>
 
 </html>
 
 <script type="text/javascript">
-function list(){
-    $.ajax({
-    url: 'app/includes/comments.php',
-    success: function(res) {
-        $('.comment_listing').html(res);
+
+function shareFunction(name, link) {
+
+    if (name == "facebook") {
+        window.open("https://facebook.com/sharer.php?u=" + link,
+            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
     }
-})
+
+    if (name == "twitter") {
+        window.open("https://twitter.com/intent/tweet?text=" + link,
+            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+    }
+
+    if (name == "google") {
+        window.open("https://plus.google.com/share?url=" + link,
+            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+    }
+
+    if (name == "linkedin") {
+        window.open("https://www.linkedin.com/shareArticle?mini=true&url=" + link,
+            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+    }
+
+    if (name == "instagram") {
+        window.open("https://www.instagram.com/",
+            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+    }
+
+    window.location.href = "" + link + "?&s=1";
+
+}
+
+function likeDislikefunc(name, link) {
+
+    console.log(name,link);
+
+    if (name == "like") {
+        window.location.href = "" + link + "&l=y";
+    }
+
+    if (name == "dislike") {
+        window.location.href = "" + link + "&l=n";
+    }
+
+}
+
+function list() {
+    $.ajax({
+        url: 'app/includes/comments.php',
+        success: function(res) {
+            $('.comment_listing').html(res);
+        }
+    })
 }
 
 list();
@@ -198,6 +244,6 @@ $(function() {
                 list();
             }
         })
-    }) 
-})
+    })
+});
 </script>

@@ -58,8 +58,46 @@
     </div>
     <!-- end page wrapper -->
 
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
-    <script type="text/javascript" src="../../assets/js/scripts.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
+
 </body>
 </html>
+
+<script>
+ClassicEditor
+    .create(document.querySelector('#body'), {
+        toolbar: ['undo', 'redo', 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
+            'blockQuote', 'imageUpload'
+        ],
+        heading: {
+            options: [{
+                    model: 'paragraph',
+                    title: 'Paragraph',
+                    class: 'ck-heading_paragraph'
+                },
+                {
+                    model: 'heading1',
+                    view: 'h1',
+                    title: 'Heading 1',
+                    class: 'ck-heading_heading1'
+                },
+                {
+                    model: 'heading2',
+                    view: 'h2',
+                    title: 'Heading 2',
+                    class: 'ck-heading_heading2'
+                }
+            ]
+        },
+        image: {
+            toolbar: [
+                'imageStyle:full',
+                'imageStyle:side',
+                '|',
+                'imageTextAlternative'
+            ]
+        }
+    });
+</script>
