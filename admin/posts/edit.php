@@ -1,5 +1,4 @@
-<?php include_once("../../path.php");?>
-<?php include_once(ROOT_PATH . "/app/controllers/posts.php");?>
+<?php include_once("../../app/controllers/posts.php");?>
 <?php adminOnly(); ?>
 
 <!DOCTYPE html>
@@ -14,91 +13,92 @@
     <link rel="stylesheet" href="../../assets/css/admin.css">
     <title>Create Posts</title>
 </head>
+
 <body>
 
-    <?php include_once( ROOT_PATH . "/app/includes/adminHeader.php" );?>
+    <?php include_once("../../app/includes/adminHeader.php");?>
 
     <!-- start page wrapper -->
     <div class="admin-wrapper">
 
-    <?php include_once( ROOT_PATH . "/app/includes/adminSidebar.php" );?>
+        <?php include_once("../../app/includes/adminSidebar.php");?>
 
-    <!-- admin content start -->
-    <div class="admin-content">
-        <div class="button-group">
-            <a href="create.php" class="btn btn-big">Add Post</a>
-            <a href="index.php" class="btn btn-big">Manage Posts</a>
-        </div>
+        <!-- admin content start -->
+        <div class="admin-content">
+            <div class="button-group">
+                <a href="create.php" class="btn btn-big">Add Post</a>
+                <a href="index.php" class="btn btn-big">Manage Posts</a>
+            </div>
 
-        <div class="content">
-            <h2 class="page-title">Edit Posts</h2>
+            <div class="content">
+                <h2 class="page-title">Edit Posts</h2>
 
-            <?php include_once(ROOT_PATH . "/app/helpers/formErrors.php");?>
+                <?php include_once("../../app/helpers/formErrors.php");?>
 
-            <form action="edit.php" method="post" enctype="multipart/form-data">
-            
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
-                
-            <div>
-                    <label for="">Title</label>
-                    <input type="text" name="title" value="<?php echo $title; ?>" class="text-input">
-                </div>
+                <form action="edit.php" method="post" enctype="multipart/form-data">
 
-                <div>
-                    <label for="">body</label>
-                    <textarea name="body" id="body"><?php echo $body; ?></textarea>
-                </div>
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
 
-                <div>
-                    <label for="">Image</label>
-                    <input type="file" name="image" class="text-input">
-                </div>
+                    <div>
+                        <label for="">Title</label>
+                        <input type="text" name="title" value="<?php echo $title; ?>" class="text-input">
+                    </div>
 
-                <div>
-                    <label for="">Topic</label>
-                    <select name="topic_id" class="text-input">
-                        
-                        <option></option>
-                        
-                        <?php foreach ($topics as $key => $topic): ?>
+                    <div>
+                        <label for="">body</label>
+                        <textarea name="body" id="body"><?php echo $body; ?></textarea>
+                    </div>
+
+                    <div>
+                        <label for="">Image</label>
+                        <input type="file" name="image" class="text-input">
+                    </div>
+
+                    <div>
+                        <label for="">Topic</label>
+                        <select name="topic_id" class="text-input">
+
+                            <option></option>
+
+                            <?php foreach ($topics as $key => $topic): ?>
 
                             <?php if (!empty($topic_id) && $topic_id == $topic['id']): ?>
-                                <option selected value="<?php echo $topic['id']; ?>"><?php echo $topic['name']; ?></option>
-                            
+                            <option selected value="<?php echo $topic['id']; ?>"><?php echo $topic['name']; ?></option>
+
                             <?php else: ?>
-                                <option value="<?php echo $topic['id']; ?>"><?php echo $topic['name']; ?></option>
-                            
+                            <option value="<?php echo $topic['id']; ?>"><?php echo $topic['name']; ?></option>
+
                             <?php endif; ?>
-                            
-                        <?php endforeach; ?>
 
-                    </select>
-                </div>
+                            <?php endforeach; ?>
 
-                <div>
+                        </select>
+                    </div>
 
-                    <?php if(empty($published) && $published == 0): ?>
+                    <div>
+
+                        <?php if(empty($published) && $published == 0): ?>
                         <label for="">
                             <input type="checkbox" name="published">
                             Publish
                         </label>
-                    <?php else: ?>
+                        <?php else: ?>
                         <label for="">
                             <input type="checkbox" name="published" checked>
                             Publish
                         </label>
-                    <?php endif; ?>
-                    
-                </div>
+                        <?php endif; ?>
 
-                <div>
-                   <button type="submit" name="update-post" class="btn btn-big">Update Post</button>
-                </div>
+                    </div>
 
-            </form>
+                    <div>
+                        <button type="submit" name="update-post" class="btn btn-big">Update Post</button>
+                    </div>
+
+                </form>
+            </div>
         </div>
-    </div>
-    <!-- admin content end -->
+        <!-- admin content end -->
 
     </div>
     <!-- end page wrapper -->
@@ -106,11 +106,12 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
-    
+
 </body>
+
 </html>
 
-<script>
+<script type="text/javascript">
 ClassicEditor
     .create(document.querySelector('#body'), {
         toolbar: ['undo', 'redo', 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',

@@ -1,9 +1,6 @@
 <?php require_once('../database/connect.php');?>
-<?php require_once('../database/db.php');?>
 
 <?php
-
-    //session_start();
     
     if (!empty($_SESSION['page_id'])) {
         $p_id = $_SESSION['page_id'];
@@ -17,21 +14,21 @@
         if (mysqli_num_rows($re)>0) {
             while ($row = mysqli_fetch_object($re)) {
                 ?>
-                <div class="c_container">
-                    <div class="c_li_name">
-                        <?php echo $row->comment_sender_name; ?>
-                    </div>
-
-                    <div class="c_li_coment">
-                        <i class="fas fa-comments"></i>
-                        &nbsp;<i><?php echo $row->comment; ?></i>
-                    </div>
-                
-                    <div class="c_li_date">
-                        <i><?php echo $row->date; ?></i>
-                    </div>
+            <div class="c_container">
+                <div class="c_li_name">
+                    <?php echo $row->comment_sender_name; ?>
                 </div>
-                <?php
+
+                <div class="c_li_coment">
+                    <i class="fas fa-comments"></i>
+                    &nbsp;<i><?php echo $row->comment; ?></i>
+                </div>
+
+                <div class="c_li_date">
+                    <i><?php echo $row->date; ?></i>
+                </div>
+            </div>
+<?php
             }
         }
     }

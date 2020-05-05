@@ -1,5 +1,4 @@
-<?php include_once("../../path.php");?>
-<?php include_once(ROOT_PATH . "/app/controllers/posts.php");?>
+<?php include_once("../../app/controllers/posts.php");?>
 <?php adminOnly(); ?>
 
 <!DOCTYPE html>
@@ -17,38 +16,41 @@
 
 <body>
 
-    <?php include_once( ROOT_PATH . "/app/includes/adminHeader.php" );?>
+    <?php include_once("../../app/includes/adminHeader.php");?>
 
     <!-- start page wrapper -->
     <div class="admin-wrapper">
 
-        <?php include_once( ROOT_PATH . "/app/includes/adminSidebar.php" );?>
+        <?php include_once("../../app/includes/adminSidebar.php");?>
 
         <!-- admin content start -->
         <div class="admin-content">
+
             <div class="button-group">
                 <a href="create.php" class="btn btn-big">Add Post</a>
                 <a href="index.php" class="btn btn-big">Manage Posts</a>
             </div>
 
             <div class="content">
+
                 <h2 class="page-title">Create Posts</h2>
 
-                <?php include_once(ROOT_PATH . "/app/helpers/formErrors.php");?>
+                <?php include_once("../../app/helpers/formErrors.php");?>
 
                 <form action="create.php" method="post" enctype="multipart/form-data">
+
                     <div>
-                        <label for="">Title</label>
+                        <label for="Title">Title</label>
                         <input type="text" name="title" value="<?php echo $title; ?>" class="text-input">
                     </div>
 
                     <div>
-                        <label for="">body</label>
+                        <label for="body">body</label>
                         <textarea name="body" id="body"><?php echo $body; ?></textarea>
                     </div>
 
                     <div>
-                        <label for="">Image</label>
+                        <label for="Image">Image</label>
                         <input type="file" name="image" class="text-input">
                     </div>
 
@@ -109,7 +111,7 @@
 
 </html>
 
-<script>
+<script type="text/javascript">
 ClassicEditor
     .create(document.querySelector('#body'), {
         toolbar: ['undo', 'redo', 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',

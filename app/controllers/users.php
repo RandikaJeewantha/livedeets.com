@@ -1,6 +1,6 @@
-<?php include_once ROOT_PATH . "/app/database/db.php";?>
-<?php include_once ROOT_PATH . "/app/helpers/middleware.php";?>
-<?php include_once ROOT_PATH . "/app/helpers/validateUser.php";?>
+<?php include_once("../database/db.php");?>
+<?php include_once("../helpers/middleware.php");?>
+<?php include_once("../helpers/validateUser.php");?>
 
 <?php
 
@@ -25,9 +25,9 @@ function loginUser($user) {
     $_SESSION['type'] = "success";
 
     if ($_SESSION['admin']) {
-        header('location: ' . BASE_URL . '/admin/dashboard.php');
+        header('location: ../../admin/dashboard.php');
     } else {
-        header('location: ' . BASE_URL . '/index.php');
+        header('location: ../../index.php');
     }
 
     exit();
@@ -106,7 +106,7 @@ if (isset($_POST['register-btn']) || isset($_POST['create-admin'])) {
 
             $_SESSION['message'] = "Admin user created successfully";
             $_SESSION['type'] = "success";
-            header('location: ' . BASE_URL . '/admin/users/index.php');
+            header('location: ../../admin/users/index.php');
             exit();
         }
 
@@ -140,7 +140,7 @@ if (isset($_POST['register-btn']) || isset($_POST['create-admin'])) {
         $count = delete($table, $id);
         $_SESSION['message'] = 'Admin user deleted successfully';
         $_SESSION['type'] = 'success';
-        header('location: ' . BASE_URL . '/admin/users/index.php');
+        header('location: ../../admin/users/index.php');
         exit();
     }
 ?>
@@ -178,7 +178,7 @@ if (isset($_POST['register-btn']) || isset($_POST['create-admin'])) {
 
             $_SESSION['message'] = "Admin user updaded successfully";
             $_SESSION['type'] = "success";
-            header('location: ' . BASE_URL . '/admin/users/index.php');
+            header('location: ../../admin/users/index.php');
             
             exit();
    

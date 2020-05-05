@@ -1,16 +1,15 @@
-<?php include_once(ROOT_PATH . "/app/helpers/trackUser.php");?>
+<?php include_once("/app/helpers/trackUser.php");?>
 
 <?php
 
     $vis_ip = getVisIPAddr();
 
-    function likesAndDislikes($condition)    
+    function likesAndDislikes($condition)
     {
         global $conn;
         global $vis_ip;
 
         if ($condition == 'y') {
-
             $postid = $_GET['id'];
             $result = mysqli_query($conn, "SELECT * FROM posts WHERE id=" . $postid);
             $row = mysqli_fetch_array($result);
@@ -22,34 +21,27 @@
             $results = mysqli_fetch_assoc($result_ip);
     
             if ($count > 0 && ($postid == $results['post_id']) && $results['is_like'] == 0) {
-
                 $sql_p = "UPDATE posts SET unlikes=" . ($nu-1) . ", likes=" . ($nl+1) . " WHERE id=" . $postid;
                 mysqli_query($conn, $sql_p);
 
                 $sql_l = "UPDATE likes SET is_like=1 WHERE id=" . $results['id'];
                 mysqli_query($conn, $sql_l);
-
             } elseif ($count > 0 && ($postid == $results['post_id']) && $results['is_like'] == 1) {
-
                 $sql_p = "UPDATE posts SET likes=" . ($nl-1) . " WHERE id=" . $postid;
                 mysqli_query($conn, $sql_p);
 
                 $sql_l = "DELETE FROM likes WHERE id=". $results['id'];
                 mysqli_query($conn, $sql_l);
-
             } else {
-
                 $sql_p = "UPDATE posts SET likes=" . ($nl + 1) . " WHERE id=" . $postid;
                 mysqli_query($conn, $sql_p);
 
                 $sql_l = "INSERT INTO likes (ip, post_id, is_like) VALUES ('" . $vis_ip . "', $postid, 1)";
                 mysqli_query($conn, $sql_l);
             }
-    
         }
 
         if ($condition == 'n') {
-
             $postid = $_GET['id'];
             $result = mysqli_query($conn, "SELECT * FROM posts WHERE id=" . $postid);
             $row = mysqli_fetch_array($result);
@@ -61,41 +53,34 @@
             $results = mysqli_fetch_assoc($result_ip);
     
             if ($count > 0 && ($postid == $results['post_id']) && $results['is_like'] == 0) {
- 
                 $sql_p = "UPDATE posts SET unlikes=" . ($nu-1) . " WHERE id=" .$postid;
-                mysqli_query($conn, $sql_p );
+                mysqli_query($conn, $sql_p);
 
                 $sql_l = "DELETE FROM likes WHERE id=" . $results['id'];
                 mysqli_query($conn, $sql_l);
-
             } elseif ($count > 0 && ($postid == $results['post_id']) && $results['is_like'] == 1) {
-
                 $sql_p = "UPDATE posts SET unlikes=" . ($nu+1) .", likes=" . ($nl-1) . " WHERE id=" . $postid;
                 mysqli_query($conn, $sql_p);
 
                 $sql_l = "UPDATE likes SET is_like=0 WHERE id=" . $results['id'];
                 mysqli_query($conn, $sql_l);
-
             } else {
-
                 $sql_l = "INSERT INTO likes (ip, post_id, is_like) VALUES ('" . $vis_ip . "', $postid, 0)";
                 mysqli_query($conn, $sql_l);
 
                 $sql_p = "UPDATE posts SET unlikes=" . ($nu+1) . " WHERE id=" . $postid;
                 mysqli_query($conn, $sql_p);
-
             }
         }
 
         visitorDefaultLikeDis();
-       
     }
     
 ?>
-
+ 
 <?php
-        function visitorDefaultLikeDis() {
-
+        function visitorDefaultLikeDis()
+        {
             global $conn;
             global $vis_ip;
             $postid = $_GET['id'];
@@ -110,17 +95,13 @@
 
                 if ($islike == 1) {
                     return "liked";
-                }
-     
-                else if ($islike == 0) {
+                } elseif ($islike == 0) {
                     return "Disliked";
                 }
-            }
-            
-            else {
+            } else {
                 return "nutral";
             }
-        }            
+        }
     
     ?>
 

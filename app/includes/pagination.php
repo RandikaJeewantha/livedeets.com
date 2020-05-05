@@ -6,16 +6,13 @@
     
     if (isset($_GET["page"])) {
         $pn = $_GET["page"];
-    } 
-    
-    else {
+    } else {
         $pn = 1;
     }
 
     $start_from = ($pn - 1) * $limit;
 
     if (isset($_GET['t_id'])) {
-
         $name = $_GET['name'];
         $topic_id = $_GET['t_id'];
 
@@ -62,10 +59,7 @@
         }
 
         $postsTitle = "You searched for posts under '" . $_GET['name'] . "'";
-    } 
-    
-    elseif (isset($_GET['key'])) {
-
+    } elseif (isset($_GET['key'])) {
         $key = $_GET['key'];
         $match = '%' . $key . '%';
 
@@ -112,10 +106,7 @@
         }
         
         $postsTitle = "You searched for '" . $key . "'";
-    } 
-    
-    else {
-        
+    } else {
         $sql = "SELECT p.*, u.username
         FROM posts AS p JOIN users AS u
         ON p.user_id=u.id WHERE p.published=?

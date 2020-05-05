@@ -1,5 +1,5 @@
-<?php include_once(ROOT_PATH . "/app/helpers/trackUser.php");?>
-<?php include_once(ROOT_PATH . "/app/includes/mail.php");?>
+<?php include_once("/app/helpers/trackUser.php");?>
+<?php include_once("/app/includes/mail.php");?>
 
 <?php
 
@@ -12,25 +12,25 @@
 
 <style>
 .alert {
-  padding: 10px;
-  background-color: #f44336;
-  color: white;
-  margin-bottom: 5px;
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    margin-bottom: 5px;
 }
 
 .closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .closebtn:hover {
-  color: black;
+    color: black;
 }
 </style>
 
@@ -61,7 +61,7 @@
 
         <div class="footer-section links">
             <h3>Quick Links</h3>
-            
+
             <ul>
                 <a href="">
                     <li>Events</li>
@@ -84,12 +84,12 @@
             <?php if (count($errors_m) > 0): ?>
 
             <?php foreach ($errors_m as $error): ?>
-                <div class="alert">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                    <?php echo $error; ?>
-                </div>
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <?php echo $error; ?>
+            </div>
             <?php endforeach;?>
-            
+
             <?php endif;?>
 
             <form action="index.php" method="post">

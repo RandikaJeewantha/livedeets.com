@@ -1,3 +1,7 @@
+<?php
+    define("BASE_URL", "http://localhost/LiveDeets.com");
+?>
+
 <?php 
 
     function usersOnly($redirect = '/index.php') {

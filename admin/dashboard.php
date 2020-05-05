@@ -1,5 +1,4 @@
-<?php include_once("../path.php");?>
-<?php include_once(ROOT_PATH . "/app/controllers/posts.php");?>
+<?php include_once("../app/controllers/posts.php");?>
 <?php adminOnly(); ?>
 
 <!DOCTYPE html>
@@ -14,32 +13,34 @@
     <link rel="stylesheet" href="../assets/css/admin.css">
     <title>Dashboard</title>
 </head>
+
 <body>
 
-    <?php include_once( ROOT_PATH . "/app/includes/adminHeader.php" );?>
+    <?php include_once("../app/includes/adminHeader.php");?>
 
     <!-- start page wrapper -->
     <div class="admin-wrapper">
 
-    <?php include_once( ROOT_PATH . "/app/includes/adminSidebar.php" );?>
+        <?php include_once("../app/includes/adminSidebar.php");?>
 
-    <!-- admin content start -->
-    <div class="admin-content">
+        <!-- admin content start -->
+        <div class="admin-content">
 
-        <div class="content">
-            <h2 class="page-title">Dashboard</h2>
+            <div class="content">
+                <h2 class="page-title">Dashboard</h2>
 
-            <?php include_once(ROOT_PATH . "/app/includes/messages.php");?>
+                <?php include_once("../app/includes/messages.php");?>
 
+            </div>
         </div>
-    </div>
-    <!-- admin content end -->
+        <!-- admin content end -->
 
     </div>
     <!-- end page wrapper -->
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-    
+
 </body>
+
 </html>

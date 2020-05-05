@@ -20,11 +20,6 @@
             array_push($errors, "Password do not match !");
         }
 
-        // $exitingUser = selectOne('users', ['email' => $user['email']]);
-        // if($exitingUser) {
-        //     array_push($errors, "Email already exists");
-        // }
-
         $exitingUser = selectOne('users', ['email' => $user['email']]);
         if($exitingUser) {
 

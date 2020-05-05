@@ -1,7 +1,6 @@
-<?php include_once("path.php");?>
-<?php include_once(ROOT_PATH . "/app/controllers/posts.php");?>
-<?php include_once(ROOT_PATH . "/app/includes/social_share.php");?>
-<?php include_once(ROOT_PATH . "/app/includes/likes_unlikes.php");?>
+<?php include_once("/app/controllers/posts.php");?>
+<?php include_once("/app/includes/social_share.php");?>
+<?php include_once("/app/includes/likes_unlikes.php");?>
 
 <?php
 
@@ -42,7 +41,7 @@
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0">
     </script>
 
-    <?php include_once(ROOT_PATH . "/app/includes/header.php");?>
+    <?php include_once("/app/includes/header.php");?>
 
     <!-- start page wrapper -->
     <div class="page-wrapper">
@@ -137,9 +136,10 @@
 
                     <?php foreach ($posts as $p): ?>
                     <div class="post clearfix">
-                        <img src="<?php echo BASE_URL . '/assets/images/' . $p['image']; ?>">
-                        <a href="<?php echo BASE_URL . '/single.php?id=' . $p['id']; ?>"
-                            class="title"><?php echo $p['title']; ?></a>
+                        <img src="<?php echo '/assets/images/' . $p['image']; ?>">
+                        <a href="<?php echo '/single.php?id=' . $p['id']; ?>"
+                            class="title"><?php echo $p['title']; ?>
+                        </a>
                     </div>
                     <?php endforeach; ?>
 
@@ -150,7 +150,7 @@
                     <ul>
                         <?php foreach($topics as $key => $topic): ?>
                         <li><a
-                                href="<?php echo BASE_URL . '/index.php?t_id=' . $topic['id'] . '&name=' . $topic['name']; ?>"><?php echo $topic['name']; ?></a>
+                                href="<?php echo '/index.php?t_id=' . $topic['id'] . '&name=' . $topic['name']; ?>"><?php echo $topic['name']; ?></a>
                         </li>
                         <?php endforeach; ?>
                     </ul>
@@ -162,17 +162,16 @@
     </div>
     <!-- end page wrapper -->
 
-    <?php include_once(ROOT_PATH . "/app/includes/footer.php");?>
+    <?php include_once("/app/includes/footer.php");?>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-    
+
 </body>
 
 </html>
 
 <script type="text/javascript">
-
 function shareFunction(name, link) {
 
     if (name == "facebook") {
@@ -206,7 +205,7 @@ function shareFunction(name, link) {
 
 function likeDislikefunc(name, link) {
 
-    console.log(name,link);
+    console.log(name, link);
 
     if (name == "like") {
         window.location.href = "" + link + "&l=y";

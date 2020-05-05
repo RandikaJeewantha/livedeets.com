@@ -1,6 +1,6 @@
-<?php include_once ROOT_PATH . "/app/database/db.php";?>
-<?php include_once ROOT_PATH . "/app/helpers/middleware.php";?>
-<?php include_once ROOT_PATH . "/app/helpers/validateTopic.php";?>
+<?php include_once("app/database/db.php");?>
+<?php include_once("app/helpers/middleware.php");?>
+<?php include_once("app/helpers/validateTopic.php");?>
 
 <?php 
 
@@ -24,7 +24,7 @@
             $topic_id = create('topics', $_POST);
             $_SESSION['message'] = 'Topic created successfully';
             $_SESSION['type'] = 'success';
-            header('location: ' . BASE_URL . '/admin/topics/index.php');
+            header('location: ../../admin/topics/index.php');
             exit();
 
         }
@@ -50,7 +50,7 @@
         $count = delete($table, $id);
         $_SESSION['message'] = 'Topics deleted successfully';
         $_SESSION['type'] = 'success';
-        header('location: ' . BASE_URL . '/admin/topics/index.php');
+        header('location: ../../admin/topics/index.php');
         exit();
     }
 
@@ -68,7 +68,7 @@
 
             $_SESSION['message'] = 'Topic updaded successfully';
             $_SESSION['type'] = 'success';
-            header('location: ' . BASE_URL . '/admin/topics/index.php');
+            header('location: ../../admin/topics/index.php');
             exit();
         }
 

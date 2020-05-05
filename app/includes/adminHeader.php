@@ -1,8 +1,8 @@
 <header>
 
-    <a href="<?php echo BASE_URL . '/index.php'; ?>" class="logo">
+    <a href="/index.php" class="logo">
         <h1 class="logo-text"><span>Live</span>Deets</h1>
-</a>
+    </a>
 
     <i class="fa fa-bars menu-toggle"></i>
     <ul class="nav">
@@ -17,9 +17,12 @@
             </a>
 
             <ul>
-                <li><a href="<?php echo BASE_URL . '/logout.php'; ?>" class="logout">
+                <li>
+                    <a href="/logout.php" class="logout">
                         <i class="fas fa-sign-out-alt"></i>
-                        &nbsp;&nbsp;Logout</a></li>
+                        &nbsp;&nbsp;Logout
+                    </a>
+                </li>
             </ul>
         </li>
 

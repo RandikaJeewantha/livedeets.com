@@ -60,7 +60,7 @@
 
 <?php
 
-    $dbfile = ROOT_PATH . "/app/helpers/visitors.db"; // path to data file
+    $dbfile = "visitors.db"; // path to data file
     $expire = 300; // average time in seconds to consider someone online before removing from the list
  
     if (!file_exists($dbfile)) {

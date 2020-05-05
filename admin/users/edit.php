@@ -1,5 +1,4 @@
-<?php include_once("../../path.php");?>
-<?php include_once(ROOT_PATH . "/app/controllers/users.php");?>
+<?php include_once("../../app/controllers/users.php");?>
 <?php adminOnly(); ?>
 
 <!DOCTYPE html>
@@ -17,12 +16,12 @@
 
 <body>
 
-    <?php include_once( ROOT_PATH . "/app/includes/adminHeader.php" );?>
+    <?php include_once("../../app/includes/adminHeader.php" );?>
 
     <!-- start page wrapper -->
     <div class="admin-wrapper">
 
-        <?php include_once( ROOT_PATH . "/app/includes/adminSidebar.php" );?>
+        <?php include_once("../../app/includes/adminSidebar.php");?>
 
         <!-- admin content start -->
         <div class="admin-content">
@@ -34,12 +33,12 @@
             <div class="content">
                 <h2 class="page-title">Edit Users</h2>
 
-                <?php include_once(ROOT_PATH . "/app/helpers/formErrors.php");?>
-                
+                <?php include_once("../../app/helpers/formErrors.php");?>
+
                 <form action="edit.php" method="post">
 
                     <input type="hidden" name="id" value="<?php echo $id; ?> ">
-                
+
                     <div>
                         <label for="">Username</label>
                         <input type="text" name="username" value="<?php echo $username; ?>" class="text-input">
@@ -77,6 +76,7 @@
                         <?php endif; ?>
 
                     </div>
+
                     <div>
                         <button type="submit" name="update-user" class="btn btn-big">Update User</button>
                     </div>
@@ -91,7 +91,7 @@
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-    
+
 </body>
 
 </html>

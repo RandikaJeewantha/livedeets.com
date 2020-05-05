@@ -1,6 +1,6 @@
-<?php include_once ROOT_PATH . "/app/database/db.php";?>
-<?php include_once ROOT_PATH . "/app/helpers/middleware.php";?>
-<?php include_once ROOT_PATH . "/app/helpers/validatePost.php";?>
+<?php include_once("../database/db.php");?>
+<?php include_once("../helpers/middleware.php");?>
+<?php include_once("../helpers/validatePost.php");?>
 
 <?php
 
@@ -31,7 +31,7 @@
         $count = delete($table, $_GET['delete_id']);
         $_SESSION['message'] = "Post delete successfully";
         $_SESSION['type'] = "success";
-        header('location: ' . BASE_URL . '/admin/posts/index.php');
+        header('location: ../../admin/posts/index.php');
         exit();
     }
 
@@ -45,7 +45,7 @@
         
         $_SESSION['message'] = "Post published state changed !";
         $_SESSION['type'] = "success";
-        header('location: ' . BASE_URL . '/admin/posts/index.php');
+        header('location: ../../admin/posts/index.php');
         exit();
     }
 
@@ -57,7 +57,7 @@
         if (!empty($_FILES['image']['name'])) {
             
             $image_name = time() . '_' . $_FILES['image']['name'];
-            $destination = ROOT_PATH . "/assets/images/" . $image_name;
+            $destination = "../../assets/images/" . $image_name;
             
             $result = move_uploaded_file($_FILES['image']['tmp_name'], $destination);
 
@@ -84,7 +84,7 @@
             $post_id = create($table, $_POST);
             $_SESSION['message'] = "Post create successfully";
             $_SESSION['type'] = "success";
-            header('location: ' . BASE_URL . '/admin/posts/index.php');
+            header('location: ../../admin/posts/index.php');
             exit();
 
         } else {
@@ -105,7 +105,7 @@
         if (!empty($_FILES['image']['name'])) {
             
             $image_name = time() . '_' . $_FILES['image']['name'];
-            $destination = ROOT_PATH . "/assets/images/" . $image_name;
+            $destination = "../../assets/images/" . $image_name;
             
             $result = move_uploaded_file($_FILES['image']['tmp_name'], $destination);
 
@@ -135,7 +135,7 @@
             $post_id = update($table, $id, $_POST);
             $_SESSION['message'] = "Post update successfully";
             $_SESSION['type'] = "success";
-            header('location: ' . BASE_URL . '/admin/posts/index.php');
+            header('location: ../../admin/posts/index.php');
             exit();
 
         } else {

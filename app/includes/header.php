@@ -1,6 +1,6 @@
 <header>
 
-    <a href="<?php echo BASE_URL . '/index.php'; ?>" class="logo">
+    <a href="/index.php" class="logo">
         <h1 class="logo-text"><span>Live</span>Deets</h1>
     </a>
 
@@ -8,14 +8,14 @@
 
     <ul class="nav">
 
-        <li><a href="<?php echo BASE_URL . '/index.php'; ?>">Home</a></li>
+        <li><a href="/index.php">Home</a></li>
 
         <li><a href="#ft">About</a></li>
 
         <li><a href="#ft">Services</a></li>
 
         <?php if(isset($_SESSION['id'])): ?>
-        <li>
+        <li> 
             <a href="#">
                 <i class="fa fa-user"></i>
                 &nbsp;&nbsp;<?php echo $_SESSION['username']; ?>
@@ -25,7 +25,7 @@
             <ul>
                 <?php if($_SESSION['admin']): ?>
                 <li>
-                    <a href="<?php echo BASE_URL . '/admin/dashboard.php'; ?>">
+                    <a href="/admin/dashboard.php">
                         <i class="fas fa-columns"></i>
                         &nbsp;&nbsp;Dashboad
                     </a>
@@ -33,7 +33,7 @@
                 <?php endif; ?>
 
                 <li>
-                    <a href="<?php echo BASE_URL . '/logout.php'; ?>" class="logout">
+                    <a href="/logout.php" class="logout">
                         <i class="fas fa-sign-out-alt"></i>
                         &nbsp;&nbsp;Logout
                     </a>

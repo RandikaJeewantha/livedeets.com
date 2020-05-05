@@ -1,5 +1,4 @@
-<?php include_once("path.php");?>
-<?php include_once(ROOT_PATH . "/app/controllers/users.php");?>
+<?php include_once("/app/controllers/users.php");?>
 <?php guestsOnly(); ?>
 
 <!DOCTYPE html>
@@ -16,14 +15,14 @@
 
 <body>
 
-<?php include_once(ROOT_PATH . "/app/includes/header.php");?>
+    <?php include_once("/app/includes/header.php");?>
 
     <div class="auth-content">
 
         <form action="login.php" method="post">
             <h2 class="form-title">Login</h2>
 
-            <?php include_once(ROOT_PATH . "/app/helpers/formErrors.php");?>
+            <?php include_once("/app/helpers/formErrors.php");?>
 
             <div>
                 <label for="">Username</label>
@@ -39,7 +38,7 @@
                 <button type="submit" name="login-btn" class="btn btn-big">Sign In</button>
             </div>
 
-            <p>Or <a href="<?php echo BASE_URL . '/register.php'; ?>">Sign Up</a></p>
+            <p>Or <a href="register.php">Sign Up</a></p>
         </form>
     </div>
 

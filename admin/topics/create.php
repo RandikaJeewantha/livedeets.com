@@ -1,5 +1,4 @@
-<?php include_once("../../path.php");?>
-<?php include_once(ROOT_PATH . "/app/controllers/topics.php");?>
+<?php include_once("../../app/controllers/topics.php");?>
 <?php adminOnly(); ?>
 
 <!DOCTYPE html>
@@ -14,46 +13,47 @@
     <link rel="stylesheet" href="../../assets/css/admin.css">
     <title>Create Topics</title>
 </head>
+
 <body>
 
-    <?php include_once( ROOT_PATH . "/app/includes/adminHeader.php" );?>
-    
+    <?php include_once("../../app/includes/adminHeader.php");?>
+
     <!-- start page wrapper -->
     <div class="admin-wrapper">
 
-    <?php include_once( ROOT_PATH . "/app/includes/adminSidebar.php" );?>
+        <?php include_once("../../app/includes/adminSidebar.php");?>
 
-    <!-- admin content start -->
-    <div class="admin-content">
-        <div class="button-group">
-            <a href="create.php" class="btn btn-big">Add Topics</a>
-            <a href="index.php" class="btn btn-big">Manage Topics</a>
+        <!-- admin content start -->
+        <div class="admin-content">
+            <div class="button-group">
+                <a href="create.php" class="btn btn-big">Add Topics</a>
+                <a href="index.php" class="btn btn-big">Manage Topics</a>
+            </div>
+
+            <div class="content">
+                <h2 class="page-title">Create Topics</h2>
+
+                <?php include_once("../../app/helpers/formErrors.php");?>
+
+                <form action="create.php" method="post">
+                    <div>
+                        <label for="">Name</label>
+                        <input type="text" name="name" value="<?php echo $name; ?>" class="text-input">
+                    </div>
+
+                    <div>
+                        <label for="">Description</label>
+                        <textarea name="description" id="body"><?php echo $description; ?></textarea>
+                    </div>
+
+                    <div>
+                        <button type="submit" name="add-topic" class="btn btn-big">Add Topic</button>
+                    </div>
+
+                </form>
+            </div>
         </div>
-
-        <div class="content">
-            <h2 class="page-title">Create Topics</h2>
-
-            <?php include_once(ROOT_PATH . "/app/helpers/formErrors.php");?>
-
-            <form action="create.php" method="post">
-                <div>
-                    <label for="">Name</label>
-                    <input type="text" name="name" value="<?php echo $name; ?>" class="text-input">
-                </div>
-
-                <div>
-                    <label for="">Description</label>
-                    <textarea name="description" id="body"><?php echo $description; ?></textarea>
-                </div>
-
-                <div>
-                   <button type="submit" name="add-topic" class="btn btn-big">Add Topic</button>
-                </div>
-
-            </form>
-        </div>
-    </div>
-    <!-- admin content end -->
+        <!-- admin content end -->
 
     </div>
     <!-- end page wrapper -->
@@ -63,9 +63,10 @@
     <script type="text/javascript" src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
 
 </body>
+
 </html>
 
-<script>
+<script type="text/javascript">
 ClassicEditor
     .create(document.querySelector('#body'), {
         toolbar: ['undo', 'redo', 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',

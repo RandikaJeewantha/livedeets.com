@@ -1,5 +1,4 @@
-<?php include_once("../../path.php");?>
-<?php include_once(ROOT_PATH . "/app/controllers/users.php");?>
+<?php include_once("../../app/controllers/users.php");?>
 <?php adminOnly(); ?>
 
 <!DOCTYPE html>
@@ -17,12 +16,12 @@
 
 <body>
 
-    <?php include_once( ROOT_PATH . "/app/includes/adminHeader.php" );?>
+    <?php include_once("../../app/includes/adminHeader.php");?>
 
     <!-- start page wrapper -->
     <div class="admin-wrapper">
 
-        <?php include_once( ROOT_PATH . "/app/includes/adminSidebar.php" );?>
+        <?php include_once("../../app/includes/adminSidebar.php");?>
 
         <!-- admin content start -->
         <div class="admin-content">
@@ -34,7 +33,7 @@
             <div class="content">
                 <h2 class="page-title">Create Users</h2>
 
-                <?php include_once(ROOT_PATH . "/app/helpers/formErrors.php");?>
+                <?php include_once("../../app/helpers/formErrors.php");?>
 
                 <form action="create.php" method="post">
                     <div>
@@ -54,24 +53,25 @@
 
                     <div>
                         <label for="">Password Confirmation</label>
-                        <input type="password" name="passwordConf" value="<?php echo $passwordConf; ?>" class="text-input">
+                        <input type="password" name="passwordConf" value="<?php echo $passwordConf; ?>"
+                            class="text-input">
                     </div>
 
                     <div>
                         <?php if (isset($admin) && $admin == 1): ?>
-                            <label for="">
+                        <label for="">
                             <input type="checkbox" name="admin" checked>
                             Admin
                         </label>
 
                         <?php else: ?>
-                            <label for="">
+                        <label for="">
                             <input type="checkbox" name="admin">
                             Admin
                         </label>
 
                         <?php endif; ?>
-                        
+
                     </div>
 
                     <div>
@@ -88,7 +88,7 @@
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-    
+
 </body>
 
 </html>
