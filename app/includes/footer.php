@@ -1,5 +1,5 @@
-<?php include_once("/app/helpers/trackUser.php");?>
-<?php include_once("/app/includes/mail.php");?>
+<?php include_once("app/helpers/trackUser.php");?>
+<?php include_once("app/includes/mail.php");?>
 
 <?php
 

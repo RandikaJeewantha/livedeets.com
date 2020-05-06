@@ -18,7 +18,7 @@
     //$vis_ip = '52.25.109.230';
   
     // Use JSON encoded string and converts, it into a PHP variable
-    $ipdat = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $vis_ip));
+    $ipdat = @json_decode(file_get_contents("https://www.geoplugin.net/json.gp?ip=" . $vis_ip));
     
     if (empty($geoplugin_countryName)) {
         $country = "Null";
@@ -60,7 +60,7 @@
 
 <?php
 
-    $dbfile = "visitors.db"; // path to data file
+    $dbfile = "app/helpers/visitors.db"; // path to data file
     $expire = 300; // average time in seconds to consider someone online before removing from the list
  
     if (!file_exists($dbfile)) {

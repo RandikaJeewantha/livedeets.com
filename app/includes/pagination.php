@@ -40,7 +40,7 @@
 
         if ($pn >= 2) {
             echo "<a href='index.php?page=1&t_id=" . $topic_id . "&name=" . $name . "'> &laquo; </a>";
-            echo "<a href='index.php?page=" . ($pn - 1) . "&t_id=" . $topic_id . "&name=" . $name . "'> < </a>";
+            echo "<a href='index.php?page=" . ($pn - 1) . "&t_id=" . $topic_id . "&name=" . $name . "'> &lsaquo; </a>";
         }
 
         for ($i = 1; $i <= $total_pages; $i++) {
@@ -54,7 +54,7 @@
         echo $pagLink;
 
         if ($pn < $total_pages) {
-            echo "<a href='index.php?page=" . ($pn + 1) . "&t_id=" . $topic_id . "&name=" . $name . "'> > </a>";
+            echo "<a href='index.php?page=" . ($pn + 1) . "&t_id=" . $topic_id . "&name=" . $name . "'> &rsaquo; </a>";
             echo "<a href='index.php?page=" . $total_pages . "&t_id=" . $topic_id . "&name=" . $name . "'> &raquo; </a>";
         }
 
@@ -87,7 +87,7 @@
 
         if ($pn >= 2) {
             echo "<a href='index.php?page=1&key=" . $key . "'> &laquo; </a>";
-            echo "<a href='index.php?page=" . ($pn - 1) . "&key=" . $key . "'> < </a>";
+            echo "<a href='index.php?page=" . ($pn - 1) . "&key=" . $key . "'> &lsaquo; </a>";
         }
 
         for ($i = 1; $i <= $total_pages; $i++) {
@@ -101,7 +101,7 @@
         echo $pagLink;
 
         if ($pn < $total_pages) {
-            echo "<a href='index.php?page=" . ($pn + 1) . "&key=" . $key . "'> > </a>";
+            echo "<a href='index.php?page=" . ($pn + 1) . "&key=" . $key . "'> &rsaquo; </a>";
             echo "<a href='index.php?page=" . $total_pages . "&key=" . $key . "'> &raquo; </a>";
         }
         
@@ -127,7 +127,7 @@
 
         if ($pn >= 2) {
             echo "<a href='index.php?page=1'> &laquo; </a>";
-            echo "<a href='index.php?page=" . ($pn - 1) . "'> < </a>";
+            echo "<a href='index.php?page=" . ($pn - 1) . "'> &lsaquo; </a>";
         }
 
         for ($i = 1; $i <= $total_pages; $i++) {
@@ -141,7 +141,7 @@
         echo $pagLink;
 
         if ($pn < $total_pages) {
-            echo "<a href='index.php?page=" . ($pn + 1) . "'> > </a>";
+            echo "<a href='index.php?page=" . ($pn + 1) . "'> &rsaquo; </a>";
             echo "<a href='index.php?page=" . $total_pages . "'> &raquo; </a>";
         }
     }

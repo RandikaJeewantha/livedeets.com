@@ -1,6 +1,6 @@
-<?php include_once("/app/controllers/posts.php");?>
-<?php include_once("/app/includes/social_share.php");?>
-<?php include_once("/app/includes/likes_unlikes.php");?>
+<?php include_once("app/controllers/posts.php");?>
+<?php include_once("app/includes/social_share.php");?>
+<?php include_once("app/includes/likes_unlikes.php");?>
 
 <?php
 
@@ -12,7 +12,7 @@
     $topics = selectAll('topics');
 
     $posts = popular_posts();
-
+ 
     if (!empty($_GET['s'])) {
         singleShare($_GET['s']);
     }
@@ -24,7 +24,7 @@
     $likeOrNot = visitorDefaultLikeDis();
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang="en">
 
 <head>
@@ -41,7 +41,7 @@
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0">
     </script>
 
-    <?php include_once("/app/includes/header.php");?>
+    <?php include_once("app/includes/header.php");?>
 
     <!-- start page wrapper -->
     <div class="page-wrapper">
@@ -136,9 +136,8 @@
 
                     <?php foreach ($posts as $p): ?>
                     <div class="post clearfix">
-                        <img src="<?php echo '/assets/images/' . $p['image']; ?>">
-                        <a href="<?php echo '/single.php?id=' . $p['id']; ?>"
-                            class="title"><?php echo $p['title']; ?>
+                        <img src="<?php echo 'assets/images/' . $p['image']; ?>">
+                        <a href="<?php echo 'single.php?id=' . $p['id']; ?>" class="title"><?php echo $p['title']; ?>
                         </a>
                     </div>
                     <?php endforeach; ?>
@@ -150,7 +149,7 @@
                     <ul>
                         <?php foreach($topics as $key => $topic): ?>
                         <li><a
-                                href="<?php echo '/index.php?t_id=' . $topic['id'] . '&name=' . $topic['name']; ?>"><?php echo $topic['name']; ?></a>
+                                href="<?php echo 'index.php?t_id=' . $topic['id'] . '&name=' . $topic['name']; ?>"><?php echo $topic['name']; ?></a>
                         </li>
                         <?php endforeach; ?>
                     </ul>
@@ -162,87 +161,88 @@
     </div>
     <!-- end page wrapper -->
 
-    <?php include_once("/app/includes/footer.php");?>
+    <?php include_once("app/includes/footer.php");?>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 
+
+    <script type="text/javascript">
+    function shareFunction(name, link) {
+
+        if (name == "facebook") {
+            window.open("https://facebook.com/sharer.php?u=" + link,
+                "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+        }
+
+        if (name == "twitter") {
+            window.open("https://twitter.com/intent/tweet?text=" + link,
+                "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+        }
+
+        if (name == "google") {
+            window.open("https://plus.google.com/share?url=" + link,
+                "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+        }
+
+        if (name == "linkedin") {
+            window.open("https://www.linkedin.com/shareArticle?mini=true&url=" + link,
+                "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+        }
+
+        if (name == "instagram") {
+            window.open("https://www.instagram.com/",
+                "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+        }
+
+        window.location.href = "" + link + "?&s=1";
+
+    }
+
+    function likeDislikefunc(name, link) {
+
+        console.log(name, link);
+
+        if (name == "like") {
+            window.location.href = "" + link + "&l=y";
+        }
+
+        if (name == "dislike") {
+            window.location.href = "" + link + "&l=n";
+        }
+
+    }
+
+    function list() {
+        $.ajax({
+            url: 'app/includes/comments.php',
+            success: function(res) {
+                $('.comment_listing').html(res);
+            }
+        })
+    }
+
+    list();
+    $(function() {
+        setInterval(function() {
+            list();
+        }, 5000);
+        $('.submit').click(function() {
+            var name = $('.name').val();
+            var comment = $('.comment').val();
+            $.ajax({
+                url: 'app/includes/comments.php',
+                data: 'name=' + name + '&comment=' + comment,
+                type: 'post',
+                success: function() {
+                    alert('Your comment has been posted successfully !');
+                    list();
+                }
+            })
+        })
+    });
+    </script>
+
 </body>
 
 </html>
-
-<script type="text/javascript">
-function shareFunction(name, link) {
-
-    if (name == "facebook") {
-        window.open("https://facebook.com/sharer.php?u=" + link,
-            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
-    }
-
-    if (name == "twitter") {
-        window.open("https://twitter.com/intent/tweet?text=" + link,
-            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
-    }
-
-    if (name == "google") {
-        window.open("https://plus.google.com/share?url=" + link,
-            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
-    }
-
-    if (name == "linkedin") {
-        window.open("https://www.linkedin.com/shareArticle?mini=true&url=" + link,
-            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
-    }
-
-    if (name == "instagram") {
-        window.open("https://www.instagram.com/",
-            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
-    }
-
-    window.location.href = "" + link + "?&s=1";
-
-}
-
-function likeDislikefunc(name, link) {
-
-    console.log(name, link);
-
-    if (name == "like") {
-        window.location.href = "" + link + "&l=y";
-    }
-
-    if (name == "dislike") {
-        window.location.href = "" + link + "&l=n";
-    }
-
-}
-
-function list() {
-    $.ajax({
-        url: 'app/includes/comments.php',
-        success: function(res) {
-            $('.comment_listing').html(res);
-        }
-    })
-}
-
-list();
-$(function() {
-    setInterval(function() {
-        list();
-    }, 5000);
-    $('.submit').click(function() {
-        var name = $('.name').val();
-        var comment = $('.comment').val();
-        $.ajax({
-            url: 'app/includes/comments.php',
-            data: 'name=' + name + '&comment=' + comment,
-            type: 'post',
-            success: function() {
-                alert('Your comment has been posted successfully !')
-                list();
-            }
-        })
-    })
-});
-</script>

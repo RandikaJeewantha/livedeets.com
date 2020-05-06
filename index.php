@@ -60,11 +60,11 @@
                 <?php foreach ($tren_posts as $tren_post): ?>
 
                 <div class="post">
-                    <img src="<?php echo 'assets/images/' . $tren_post['image']; ?>" alt=""
-                        class="slider-image">
+                    <img src="<?php echo 'assets/images/' . $tren_post['image']; ?>" alt="" class="slider-image">
                     <div class="post-info">
                         <h4>
-                            <a href="single.php?id=<?php echo $tren_post['id']; ?>"><?php echo $tren_post['title']; ?></a>
+                            <a
+                                href="single.php?id=<?php echo $tren_post['id']; ?>"><?php echo $tren_post['title']; ?></a>
                         </h4>
                     </div>
                 </div>
@@ -86,14 +86,14 @@
 
                 <?php foreach ($posts as $post): ?>
                 <div class="post clearfix">
-                    <img src="<?php echo '/assets/images/' . $post['image']; ?>" alt="" class="post-image">
+                    <img src="<?php echo 'assets/images/' . $post['image']; ?>" alt="" class="post-image">
                     <div class="post-preview">
                         <h3><a href="single.php?id=<?php echo $post['id']; ?>"><?php echo $post['title']; ?></a></h3>
                         <i class="far fa-user">&nbsp;<?php echo $post['username']; ?></i> &nbsp;
                         <i
                             class="far fa-calendar">&nbsp;<?php echo date('F j, Y', strtotime($post['create_at'])); ?></i>
                         <p class="preview-text">
-                            <?php echo html_entity_decode(substr($post['body'], 0, 300) . '...'); ?>
+                            <?php echo strip_tags(html_entity_decode(substr($post['body'], 0, 300) . '...')); ?>
                         </p>
 
                         <a href="single.php?id=<?php echo $post['id']; ?>" class="btn read-more">Read More</a>
@@ -103,7 +103,7 @@
 
                 <div class="center">
                     <div class="pagination">
-                        <?php include_once("/app/includes/pagination.php");?>
+                        <?php include_once("app/includes/pagination.php");?>
                     </div>
                 </div>
 
@@ -146,7 +146,8 @@
 
                         <?php foreach ($topics as $key => $topic): ?>
                         <li>
-                            <a href="<?php echo '/index.php?t_id=' . $topic['id'] . '&name=' . $topic['name']; ?>"><?php echo $topic['name']; ?></a>
+                            <a
+                                href="<?php echo 'index.php?t_id=' . $topic['id'] . '&name=' . $topic['name']; ?>"><?php echo $topic['name']; ?></a>
                         </li>
                         <?php endforeach; ?>
 
@@ -168,84 +169,92 @@
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js">
     </script>
+
+    <script type="text/javascript">
+
+    function shareFunction(name, link) {
+
+        if (name == "facebook") {
+            window.open("https://facebook.com/sharer.php?u=" + link,
+                "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+        }
+
+        if (name == "twitter") {
+            window.open("https://twitter.com/intent/tweet?text=" + link,
+                "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+        }
+
+        if (name == "google") {
+            window.open("https://plus.google.com/share?url=" + link,
+                "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+        }
+
+        if (name == "linkedin") {
+            window.open("https://www.linkedin.com/shareArticle?mini=true&url=" + link,
+                "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+        }
+
+        if (name == "instagram") {
+            window.open("https://www.instagram.com/",
+                "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
+        }
+
+        if(link == "http://localhost/LiveDeets.com/" || link == "http://localhost/LiveDeets.com/index.php") {
+            window.location.href = "" + link + "index.php?&s=1";
+        }
+        else {
+            window.location.href = "" + link + "&s=1";
+        }
+
+    }
+
+    $(document).ready(function() {
+
+        $('.menu-toggle').on('click', function() {
+            $('.nav').toggleClass('showing');
+            $('.nav ul').toggleClass('showing');
+        });
+
+        $('.post-wrapper').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            nextArrow: $('.next'),
+            prevArrow: $('.prev'),
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        });
+
+    });
+
+    </script>
+
 </body>
 
 </html>
-
-<script type="text/javascript">
-function shareFunction(name, link) {
-
-    if (name == "facebook") {
-        window.open("https://facebook.com/sharer.php?u=" + link,
-            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
-    }
-
-    if (name == "twitter") {
-        window.open("https://twitter.com/intent/tweet?text=" + link,
-            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
-    }
-
-    if (name == "google") {
-        window.open("https://plus.google.com/share?url=" + link,
-            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
-    }
-
-    if (name == "linkedin") {
-        window.open("https://www.linkedin.com/shareArticle?mini=true&url=" + link,
-            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
-    }
-
-    if (name == "instagram") {
-        window.open("https://www.instagram.com/",
-            "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
-    }
-
-    window.location.href = "" + link + "?&s=1";
-
-}
-
-$(document).ready(function() {
-
-    $('.menu-toggle').on('click', function() {
-        $('.nav').toggleClass('showing');
-        $('.nav ul').toggleClass('showing');
-    });
-
-    $('.post-wrapper').slick({
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        nextArrow: $('.next'),
-        prevArrow: $('.prev'),
-        responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
-        ]
-    });
-
-});
-</script>

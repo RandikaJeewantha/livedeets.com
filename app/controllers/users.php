@@ -1,6 +1,6 @@
-<?php include_once("../database/db.php");?>
-<?php include_once("../helpers/middleware.php");?>
-<?php include_once("../helpers/validateUser.php");?>
+<?php include_once("app/database/db.php");?>
+<?php include_once("app/helpers/middleware.php");?>
+<?php include_once("app/helpers/validateUser.php");?>
 
 <?php
 

@@ -1,4 +1,4 @@
-<?php include_once("/app/helpers/trackUser.php");?>
+<?php include_once("app/helpers/trackUser.php");?>
 
 <?php
 
