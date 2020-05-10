@@ -1,5 +1,6 @@
-<?php include_once("app/controllers/topics.php");?>
-<?php include_once("app/includes/social_share.php");?>
+<?php include_once("path.php");?>
+<?php include_once(ROOT_PATH . "/app/controllers/topics.php");?>
+<?php include_once(ROOT_PATH . "/app/includes/social_share.php");?>
 
 <?php
 
@@ -14,6 +15,7 @@
     if (isset($_GET['key'])) {
         $postsTitle = "You searched for '" . $_GET['key'] . "'";
         $posts = searchPosts($_GET['key']);
+
     } else {
         $posts = getPublishedPosts();
     }
@@ -40,9 +42,9 @@
 
 <body>
 
-    <?php include_once("app/includes/header.php");?>
+    <?php include_once(ROOT_PATH ."/app/includes/header.php");?>
 
-    <?php include_once("app/includes/messages.php");?>
+    <?php include_once(ROOT_PATH . "/app/includes/messages.php");?>
 
     <!-- start page wrapper -->
     <div class="page-wrapper">
@@ -60,7 +62,7 @@
                 <?php foreach ($tren_posts as $tren_post): ?>
 
                 <div class="post">
-                    <img src="<?php echo 'assets/images/' . $tren_post['image']; ?>" alt="" class="slider-image">
+                    <img src="<?php echo $tren_post['first_page_image']; ?>" alt="" class="slider-image">
                     <div class="post-info">
                         <h4>
                             <a
@@ -86,7 +88,7 @@
 
                 <?php foreach ($posts as $post): ?>
                 <div class="post clearfix">
-                    <img src="<?php echo 'assets/images/' . $post['image']; ?>" alt="" class="post-image">
+                    <img src="<?php echo $post['first_page_image']; ?>" alt="" class="post-image">
                     <div class="post-preview">
                         <h3><a href="single.php?id=<?php echo $post['id']; ?>"><?php echo $post['title']; ?></a></h3>
                         <i class="far fa-user">&nbsp;<?php echo $post['username']; ?></i> &nbsp;
@@ -103,7 +105,7 @@
 
                 <div class="center">
                     <div class="pagination">
-                        <?php include_once("app/includes/pagination.php");?>
+                        <?php include_once(ROOT_PATH . "/app/includes/pagination.php");?>
                     </div>
                 </div>
 
@@ -154,7 +156,7 @@
                     </ul>
                 </div>
 
-                <?php include_once("app/includes/counter.php");?>
+                <?php include_once(ROOT_PATH . "/app/includes/counter.php");?>
             </div>
 
         </div>
@@ -163,7 +165,7 @@
     </div>
     <!-- end page wrapper -->
 
-    <?php include_once("app/includes/footer.php");?>
+    <?php include_once(ROOT_PATH . "/app/includes/footer.php");?>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>

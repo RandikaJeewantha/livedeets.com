@@ -1,4 +1,5 @@
-<?php include_once("../../app/controllers/topics.php");?>
+<?php include_once("../../path.php");?>
+<?php include_once(ROOT_PATH . "/app/controllers/topics.php");?>
 <?php adminOnly(); ?>
 
 <!DOCTYPE html>
@@ -16,12 +17,12 @@
 
 <body>
 
-    <?php include_once("../../app/includes/adminHeader.php");?>
+    <?php include_once(ROOT_PATH . "/app/includes/adminHeader.php");?>
 
     <!-- start page wrapper -->
     <div class="admin-wrapper">
 
-        <?php include_once("../../app/includes/adminSidebar.php");?>
+        <?php include_once(ROOT_PATH . "/app/includes/adminSidebar.php");?>
 
         <!-- admin content start -->
         <div class="admin-content">
@@ -33,7 +34,7 @@
             <div class="content">
                 <h2 class="page-title">Create Topics</h2>
 
-                <?php include_once("../../app/helpers/formErrors.php");?>
+                <?php include_once(ROOT_PATH . "/app/helpers/formErrors.php");?>
 
                 <form action="create.php" method="post">
                     <div>
@@ -70,7 +71,7 @@
 ClassicEditor
     .create(document.querySelector('#body'), {
         toolbar: ['undo', 'redo', 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
-            'blockQuote', 'imageUpload'
+            'blockQuote'
         ],
         heading: {
             options: [{
@@ -90,14 +91,6 @@ ClassicEditor
                     title: 'Heading 2',
                     class: 'ck-heading_heading2'
                 }
-            ]
-        },
-        image: {
-            toolbar: [
-                'imageStyle:full',
-                'imageStyle:side',
-                '|',
-                'imageTextAlternative'
             ]
         }
     });

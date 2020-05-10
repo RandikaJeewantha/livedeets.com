@@ -1,6 +1,6 @@
-<?php include_once("app/database/db.php");?>
-<?php include_once("app/helpers/middleware.php");?>
-<?php include_once("app/helpers/validateTopic.php");?>
+<?php include_once(ROOT_PATH . "/app/database/db.php");?>
+<?php include_once(ROOT_PATH . "/app/helpers/middleware.php");?>
+<?php include_once(ROOT_PATH . "/app/helpers/validateTopic.php");?>
 
 <?php 
 

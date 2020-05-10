@@ -259,6 +259,11 @@ header .menu-toggle {
     margin-bottom: 20px;
 }
 
+.content .main-content.single .img-sector img{
+    width: 49%;
+    height: 35%;
+}
+
 .content .main-content.single .commments input , .content .main-content.single .commments textarea {
     width: 60%;
 } 

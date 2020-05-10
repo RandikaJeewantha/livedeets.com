@@ -1,6 +1,7 @@
-<?php include_once("app/controllers/posts.php");?>
-<?php include_once("app/includes/social_share.php");?>
-<?php include_once("app/includes/likes_unlikes.php");?>
+<?php include_once("path.php");?>
+<?php include_once(ROOT_PATH . "/app/controllers/posts.php");?>
+<?php include_once(ROOT_PATH . "/app/includes/social_share.php");?>
+<?php include_once(ROOT_PATH . "/app/includes/likes_unlikes.php");?>
 
 <?php
 
@@ -41,7 +42,7 @@
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0">
     </script>
 
-    <?php include_once("app/includes/header.php");?>
+    <?php include_once(ROOT_PATH . "/app/includes/header.php");?>
 
     <!-- start page wrapper -->
     <div class="page-wrapper">
@@ -54,8 +55,24 @@
                 <div class="main-content single">
                     <h2 class="post-title"><?php echo $post['title']; ?></h2>
 
+                    <div class="img-sector">
+                        <img src="<?php echo $post['within_post_image_01']; ?>" alt="within_post_image_01" class="">
+                        <img src="<?php echo $post['within_post_image_02']; ?>" alt="within_post_image_02" class="">
+                    </div>
+
                     <div class="post-content">
                         <?php echo html_entity_decode($post['body']); ?>
+                    </div>
+
+                    <div class="img-sector">
+
+                        <?php if(!empty($post['within_post_image_03'])): ?>
+                        <img src="<?php echo $post['within_post_image_03']; ?>" alt="within_post_image_03" class="">
+                        <?php endif; ?>
+                        
+                        <?php if(!empty($post['within_post_image_04'])): ?>
+                        <img src="<?php echo $post['within_post_image_04']; ?>" alt="within_post_image_04" class="">
+                        <?php endif; ?>
                     </div>
 
                     <div class="like-btn">
@@ -136,7 +153,7 @@
 
                     <?php foreach ($posts as $p): ?>
                     <div class="post clearfix">
-                        <img src="<?php echo 'assets/images/' . $p['image']; ?>">
+                        <img src="<?php echo $p['first_page_image']; ?>">
                         <a href="<?php echo 'single.php?id=' . $p['id']; ?>" class="title"><?php echo $p['title']; ?>
                         </a>
                     </div>
@@ -161,11 +178,10 @@
     </div>
     <!-- end page wrapper -->
 
-    <?php include_once("app/includes/footer.php");?>
+    <?php include_once(ROOT_PATH . "/app/includes/footer.php");?>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-
 
     <script type="text/javascript">
     function shareFunction(name, link) {
@@ -195,7 +211,7 @@
                 "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=400,height=400");
         }
 
-        window.location.href = "" + link + "?&s=1";
+        window.location.href = "" + link + "&s=1";
 
     }
 

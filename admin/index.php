@@ -1,5 +1,8 @@
+<?php include_once("../path.php");?>
+
 <?php 
 
-    header('location: ../login.php');
+    $redirect = BASE_URL . "/login.php";
+    header('location:' . $redirect);
 
 ?>

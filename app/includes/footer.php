@@ -1,5 +1,5 @@
-<?php include_once("app/helpers/trackUser.php");?>
-<?php include_once("app/includes/mail.php");?>
+<?php include_once(ROOT_PATH . "/app/helpers/trackUser.php");?>
+<?php include_once(ROOT_PATH . "/app/includes/mail.php");?>
 
 <?php
 
@@ -92,7 +92,7 @@
 
             <?php endif;?>
 
-            <form action="index.php" method="post">
+            <form action="index.php#ft" method="post">
 
                 <input type="email" name="email" class="text-input contact-input" placeholder="Your email address...">
                 <textarea rows="4" name="message" class="text-input contact-input"

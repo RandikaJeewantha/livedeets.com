@@ -1,4 +1,5 @@
-<?php require_once('../database/connect.php');?>
+<?php include_once("../../path.php");?>
+<?php require_once(ROOT_PATH . "/app/database/connect.php");?>
 
 <?php
     

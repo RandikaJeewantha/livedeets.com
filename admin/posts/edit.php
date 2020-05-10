@@ -1,4 +1,5 @@
-<?php include_once("../../app/controllers/posts.php");?>
+<?php include_once("../../path.php");?>
+<?php include_once(ROOT_PATH . "/app/controllers/posts.php");?>
 <?php adminOnly(); ?>
 
 <!DOCTYPE html>
@@ -16,12 +17,12 @@
 
 <body>
 
-    <?php include_once("../../app/includes/adminHeader.php");?>
+    <?php include_once(ROOT_PATH . "/app/includes/adminHeader.php");?>
 
     <!-- start page wrapper -->
     <div class="admin-wrapper">
 
-        <?php include_once("../../app/includes/adminSidebar.php");?>
+        <?php include_once(ROOT_PATH . "/app/includes/adminSidebar.php");?>
 
         <!-- admin content start -->
         <div class="admin-content">
@@ -33,9 +34,9 @@
             <div class="content">
                 <h2 class="page-title">Edit Posts</h2>
 
-                <?php include_once("../../app/helpers/formErrors.php");?>
+                <?php include_once(ROOT_PATH . "/app/helpers/formErrors.php");?>
 
-                <form action="edit.php" method="post" enctype="multipart/form-data">
+                <form action="edit.php" method="post">
 
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
 
@@ -49,9 +50,35 @@
                         <textarea name="body" id="body"><?php echo $body; ?></textarea>
                     </div>
 
+                    <p>
+                        <strong>Image Url Should Be</strong><br>
+                        <i class="fas fa-hand-point-right"></i>
+                        <strong> https://drive.google.com/uc?export=view&id=1424gdscv36vdhjv363</strong>
+                    </p>
+
                     <div>
-                        <label for="">Image</label>
-                        <input type="file" name="image" class="text-input">
+                        <label for="FirstPageImage">First Page Image</label>
+                        <input type="text" name="first_page_image" class="text-input" value="<?php echo $first_page_image; ?>">
+                    </div>
+
+                    <div>
+                        <label for="WithinPostImage01">Within Post Image 01</label>
+                        <input type="text" name="within_post_image_01" class="text-input" value="<?php echo $within_post_image_01; ?>">
+                    </div>
+
+                    <div>
+                        <label for="WithinPostImage02">Within Post Image 02</label>
+                        <input type="text" name="within_post_image_02" class="text-input" value="<?php echo $within_post_image_02; ?>">
+                    </div>
+
+                    <div>
+                        <label for="WithinPostImage03">Within Post Image 03</label>
+                        <input type="text" name="within_post_image_03" class="text-input" value="<?php echo $within_post_image_03; ?>">
+                    </div>
+
+                    <div>
+                        <label for="WithinPostImage04">Within Post Image 04</label>
+                        <input type="text" name="within_post_image_04" class="text-input" value="<?php echo $within_post_image_04; ?>">
                     </div>
 
                     <div>
@@ -115,7 +142,7 @@
 ClassicEditor
     .create(document.querySelector('#body'), {
         toolbar: ['undo', 'redo', 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
-            'blockQuote', 'imageUpload'
+            'blockQuote'
         ],
         heading: {
             options: [{
@@ -135,14 +162,6 @@ ClassicEditor
                     title: 'Heading 2',
                     class: 'ck-heading_heading2'
                 }
-            ]
-        },
-        image: {
-            toolbar: [
-                'imageStyle:full',
-                'imageStyle:side',
-                '|',
-                'imageTextAlternative'
             ]
         }
     });

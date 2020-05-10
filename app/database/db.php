@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 
-<?php require_once('connect.php');?>
+<?php require_once(ROOT_PATH . "/app/database/connect.php");?>
 
 <?php
 

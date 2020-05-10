@@ -1,4 +1,5 @@
-<?php include_once("../../app/controllers/posts.php");?>
+<?php include_once("../../path.php");?>
+<?php include_once(ROOT_PATH . "/app/controllers/posts.php");?>
 <?php adminOnly(); ?>
 
 <!DOCTYPE html>
@@ -16,12 +17,12 @@
 
 <body>
 
-    <?php include_once("../../app/includes/adminHeader.php");?>
+    <?php include_once(ROOT_PATH . "/app/includes/adminHeader.php");?>
 
     <!-- start page wrapper -->
     <div class="admin-wrapper">
 
-        <?php include_once("../../app/includes/adminSidebar.php");?>
+        <?php include_once(ROOT_PATH . "/app/includes/adminSidebar.php");?>
 
         <!-- admin content start -->
         <div class="admin-content">
@@ -35,9 +36,9 @@
 
                 <h2 class="page-title">Create Posts</h2>
 
-                <?php include_once("../../app/helpers/formErrors.php");?>
+                <?php include_once(ROOT_PATH . "/app/helpers/formErrors.php");?>
 
-                <form action="create.php" method="post" enctype="multipart/form-data">
+                <form action="create.php" method="post">
 
                     <div>
                         <label for="Title">Title</label>
@@ -45,13 +46,39 @@
                     </div>
 
                     <div>
-                        <label for="body">body</label>
+                        <label for="body">Body</label>
                         <textarea name="body" id="body"><?php echo $body; ?></textarea>
                     </div>
 
+                    <p>
+                        <strong>Image Url Should Be</strong><br>
+                        <i class="fas fa-hand-point-right"></i>
+                        <strong> https://drive.google.com/uc?export=view&id=1424gdscv36vdhjv363</strong>
+                    </p>
+
                     <div>
-                        <label for="Image">Image</label>
-                        <input type="file" name="image" class="text-input">
+                        <label for="FirstPageImage">First Page Image</label>
+                        <input type="text" name="first_page_image" class="text-input">
+                    </div>
+
+                    <div>
+                        <label for="WithinPostImage01">Within Post Image 01</label>
+                        <input type="text" name="within_post_image_01" class="text-input">
+                    </div>
+
+                    <div>
+                        <label for="WithinPostImage02">Within Post Image 02</label>
+                        <input type="text" name="within_post_image_02" class="text-input">
+                    </div>
+
+                    <div>
+                        <label for="WithinPostImage03">Within Post Image 03</label>
+                        <input type="text" name="within_post_image_03" class="text-input">
+                    </div>
+
+                    <div>
+                        <label for="WithinPostImage04">Within Post Image 04</label>
+                        <input type="text" name="within_post_image_04" class="text-input">
                     </div>
 
                     <div>
@@ -106,44 +133,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
-
+    <script type="text/javascript" src="../../assets/js/editor.js"></script>
 </body>
 
 </html>
-
-<script type="text/javascript">
-ClassicEditor
-    .create(document.querySelector('#body'), {
-        toolbar: ['undo', 'redo', 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
-            'blockQuote', 'imageUpload'
-        ],
-        heading: {
-            options: [{
-                    model: 'paragraph',
-                    title: 'Paragraph',
-                    class: 'ck-heading_paragraph'
-                },
-                {
-                    model: 'heading1',
-                    view: 'h1',
-                    title: 'Heading 1',
-                    class: 'ck-heading_heading1'
-                },
-                {
-                    model: 'heading2',
-                    view: 'h2',
-                    title: 'Heading 2',
-                    class: 'ck-heading_heading2'
-                }
-            ]
-        },
-        image: {
-            toolbar: [
-                'imageStyle:full',
-                'imageStyle:side',
-                '|',
-                'imageTextAlternative'
-            ]
-        }
-    });
-</script>

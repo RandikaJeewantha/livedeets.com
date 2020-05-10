@@ -1,6 +1,6 @@
-<?php include_once("app/database/db.php");?>
-<?php include_once("app/helpers/middleware.php");?>
-<?php include_once("app/helpers/validatePost.php");?>
+<?php include_once(ROOT_PATH . "/app/database/db.php");?>
+<?php include_once(ROOT_PATH . "/app/helpers/middleware.php");?>
+<?php include_once(ROOT_PATH . "/app/helpers/validatePost.php");?>
 
 <?php
 
@@ -11,6 +11,11 @@
     $body = "";
     $topic_id = "";
     $published = "";
+    $first_page_image = "";
+    $within_post_image_01 = "";
+    $within_post_image_02 = "";
+    $within_post_image_03 = "";
+    $within_post_image_04 = "";
 
     $topics = selectAll('topics');
     $posts = selectAll($table);
@@ -23,6 +28,11 @@
         $body = $post['body'];
         $topic_id = $post['topic_id'];
         $published = $post['published'];
+        $first_page_image = $post['first_page_image'];
+        $within_post_image_01 = $post['within_post_image_01'];
+        $within_post_image_02 = $post['within_post_image_02'];
+        $within_post_image_03 = $post['within_post_image_03'];
+        $within_post_image_04 = $post['within_post_image_04'];
     }
 
     if (isset($_GET['delete_id'])) {
@@ -54,26 +64,6 @@
         adminOnly();
         $errors = validatePost($_POST);
 
-        if (!empty($_FILES['image']['name'])) {
-            
-            $image_name = time() . '_' . $_FILES['image']['name'];
-            $destination = "../../assets/images/" . $image_name;
-            
-            $result = move_uploaded_file($_FILES['image']['tmp_name'], $destination);
-
-            if ($result) {
-                $_POST['image'] = $image_name;
-            }
-
-            else {
-                array_push($errors, "Failed to upload image");
-            }
-        }
-
-        else {
-            array_push($errors, "Post image required");
-        }
-
         if (count($errors) == 0) {
             unset($_POST['add-post']);
 
@@ -93,6 +83,11 @@
             $body = $_POST['body'];
             $topic_id = $_POST['topic_id'];
             $published = isset($_POST['published']) ? 1 : 0;
+            $first_page_image = $_POST['first_page_image'];
+            $within_post_image_01 = $_POST['within_post_image_01'];
+            $within_post_image_02 = $_POST['within_post_image_02'];
+            $within_post_image_03 = $_POST['within_post_image_03'];
+            $within_post_image_04 = $_POST['within_post_image_04'];
         }
         
     }
@@ -101,26 +96,6 @@
 
         adminOnly();
         $errors = validatePost($_POST);
-
-        if (!empty($_FILES['image']['name'])) {
-            
-            $image_name = time() . '_' . $_FILES['image']['name'];
-            $destination = "../../assets/images/" . $image_name;
-            
-            $result = move_uploaded_file($_FILES['image']['tmp_name'], $destination);
-
-            if ($result) {
-                $_POST['image'] = $image_name;
-            }
-
-            else {
-                array_push($errors, "Failed to upload image");
-            }
-        }
-
-        else {
-            array_push($errors, "Post image required");
-        }
 
         if (count($errors) == 0) {
 
@@ -144,6 +119,11 @@
             $body = $_POST['body'];
             $topic_id = $_POST['topic_id'];
             $published = isset($_POST['published']) ? 1 : 0;
+            $first_page_image = $_POST['first_page_image'];
+            $within_post_image_01 = $_POST['within_post_image_01'];
+            $within_post_image_02 = $_POST['within_post_image_02'];
+            $within_post_image_03 = $_POST['within_post_image_03'];
+            $within_post_image_04 = $_POST['within_post_image_04'];
         }
 
     }

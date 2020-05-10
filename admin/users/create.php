@@ -1,4 +1,5 @@
-<?php include_once("../../app/controllers/users.php");?>
+<?php include_once("../../path.php");?>
+<?php include_once(ROOT_PATH . "/app/controllers/users.php");?>
 <?php adminOnly(); ?>
 
 <!DOCTYPE html>
@@ -16,12 +17,12 @@
 
 <body>
 
-    <?php include_once("../../app/includes/adminHeader.php");?>
+    <?php include_once(ROOT_PATH . "/app/includes/adminHeader.php");?>
 
     <!-- start page wrapper -->
     <div class="admin-wrapper">
 
-        <?php include_once("../../app/includes/adminSidebar.php");?>
+        <?php include_once(ROOT_PATH . "/app/includes/adminSidebar.php");?>
 
         <!-- admin content start -->
         <div class="admin-content">
@@ -33,7 +34,7 @@
             <div class="content">
                 <h2 class="page-title">Create Users</h2>
 
-                <?php include_once("../../app/helpers/formErrors.php");?>
+                <?php include_once(ROOT_PATH . "/app/helpers/formErrors.php");?>
 
                 <form action="create.php" method="post">
                     <div>
